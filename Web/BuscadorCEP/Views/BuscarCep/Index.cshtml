@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Buscar Cep";
+}
+
+<div class="mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@(Url.Action("Index","Home"))">Início</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Buscar CEP</li>
+        </ol>
+    </nav>
+    <div class="mt-4">
+        <div class="mb-3 col-3">
+            <label class="form-label">Estado</label>
+            <select id="estado-select" class="form-select">
+                <option hidden>Escolha um estado...</option>
+                @{
+                    foreach (var estado in ViewBag.Estados)
+                    {
+                        <option value="@estado.Key" id="@estado.Key">@estado.Value</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="mb-3 col-3">
+            <label class="form-label">Município</label>
+            <select id="municipio-select" class="form-select" disabled>
+                <option hidden>Escolha um município...</option>
+            </select>
+        </div>
+        <div class="mb-3 col-3">
+            <label class="form-label">Logradouro</label>
+            <select id="logradouro-select" class="form-select" disabled>
+                <option hidden>Escolha um logradouro...</option>
+            </select>
+        </div>
+    </div>
+    <div class="d-flex gap-4 mt-3">
+        <button class="btn btn-secondary" onclick="window.location.pathname = '@(Url.Action("Index","Home"))'">Voltar</button>
+        <button class="btn btn-primary" onclick="BuscaCep()" data-bs-toggle="modal" data-bs-target="#cep-modal">Pesquisar</button>
+    </div>
+</div>
+
+<div id="cep-modal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cep</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-2">
+                    <div class="col-auto">
+                        <label class="form-label fw-bold">CEP:</label>
+                    </div>
+                    <div class="col-auto">
+                        <p id="cep-p"></p>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-auto">
+                        <label class="form-label fw-bold">Código do logradouro:</label>
+                    </div>
+                    <div class="col-auto">
+                        <p id="codLogradouro-p"></p>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-auto">
+                        <label class="form-label fw-bold">Município:</label>
+                    </div>
+                    <div class="col-auto">
+                        <p id="municipio-p"></p>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-auto">
+                        <label class="form-label fw-bold">Logradouro:</label>
+                    </div>
+                    <div class="col-auto">
+                        <p id="logradouro-p"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="~/Scripts/Views/BuscarCep/Index.js"></script>
+}

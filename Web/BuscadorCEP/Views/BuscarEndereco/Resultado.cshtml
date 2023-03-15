@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Endereço";
+}
+
+<div class="mt-2">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@(Url.Action("Index","Home"))">Início</a></li>
+            <li class="breadcrumb-item"><a href="@(Url.Action("Index","BuscarEndereco"))">Buscar Endereço</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Resultado - @ViewBag.Cep</li>
+        </ol>
+    </nav>
+    <div class="mt-4">
+        <div class="mb-3 col-3">
+            <label class="form-label">Logradouro</label>
+            <input id="logradouro-input" class="form-control" disabled>
+        </div>
+        <div class="mb-3 col-3">
+            <label class="form-label">Município/ UF</label>
+            <input id="municipio-input" class="form-control" disabled>
+        </div>
+        <div class="mb-3 col-3">
+            <label class="form-label">Bairro</label>
+            <input id="bairro-input" class="form-control" disabled>
+        </div>
+        <div class="mb-3 col-3">
+            <label class="form-label">CEP</label>
+            <input value="@ViewBag.Cep" id="cep-input" class="form-control" disabled>
+        </div>
+    </div>
+    <div class="d-flex gap-4 mt-3">
+        <button class="btn btn-primary" onclick="window.location.href = `${window.location.origin}${window.location.pathname}`">Nova Busca</button>
+        <button class="btn btn-secondary" onclick="window.print()" >Imprimir</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/Views/BuscarEndereco/Resultado.js"></script>
+}

@@ -1,0 +1,16 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="mt-5">
+    <h1 class="fw-bold">Bem vindo ao BuscadorCEP!</h1>
+    <div class="mt-3">
+        <p>O aplicativo BuscadorCEP! permite que você encontre códigos de endereçamento postais (CEP).</p>
+        <p>Se você já tiver o CEP em mãos e gostaria de buscar seu endereço, o BuscadorCEP! também vai te ajudar.</p>
+        <p>Aproveite :D</p>
+    </div>
+    <div class="d-flex gap-4 mt-3">
+        <button class="btn btn-primary" onclick="window.location.pathname = '@(Url.Action("Index","BuscarEndereco"))'">Buscar Endereço</button>
+        <button class="btn btn-primary" onclick="window.location.pathname = '@(Url.Action("Index","BuscarCep"))'">Buscar CEP</button>
+    </div>
+</div>
